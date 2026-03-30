@@ -109,7 +109,19 @@
     });
   });
 
-  window.addEventListener('orientationchange', () => {
+  function recalc() {
+    const portrait = isPortrait();
+    if (activeIndex !== null) {
+      const targetI = parseInt(activeIndex) - 1;
+      if (portrait) applyHeights(activeHeights(targetI));
+      else          applyWidths(activeWidths(targetI));
+    } else {
+      if (portrait) applyHeights(defaultHeights());
+      else          applyWidths(defaultWidths());
+    }
+  }
+
+  function resetLayout() {
     wrapper.removeAttribute('data-active');
     sections.forEach(s => { s.classList.remove('is-active', 'is-collapsed'); s.style.transition = 'none'; });
     activeIndex = null;
@@ -123,6 +135,23 @@
       }
       requestAnimationFrame(() => requestAnimationFrame(enableTransitions));
     }, 100);
+  }
+
+  window.addEventListener('orientationchange', resetLayout);
+
+  let resizeTimer;
+  let prevPortrait = isPortrait();
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      const nowPortrait = isPortrait();
+      if (nowPortrait !== prevPortrait) {
+        prevPortrait = nowPortrait;
+        resetLayout();
+      } else {
+        recalc();
+      }
+    }, 80);
   });
 
   init();
