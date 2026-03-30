@@ -1,0 +1,166 @@
+@media screen and (max-width: 1366px) and (orientation: landscape) {
+  .about-text { font-size: 19px; }
+  .mark-label, .mark-ic-text { font-size: 19px; }
+}
+
+@media screen and (max-width: 1280px) and (orientation: landscape) {
+  .about-text { font-size: 18px; }
+  .mark-label, .mark-ic-text { font-size: 18px; }
+}
+
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+  :root {
+    --panel-width: 200px;
+    --panel-min:   200px;
+    --section-collapsed: 48px;
+    --mark-width: 28px;
+  }
+
+  .about-text { font-size: 18px; }
+  .mark-label, .mark-ic-text { font-size: 18px; }
+  .mark-oval { width: 22px; height: 44px; }
+  .spec-label, .spec-value, .clock-time { font-size: 18px; }
+}
+
+@media screen and (orientation: portrait),
+       screen and (max-width: 767px) {
+
+  .layout {
+    flex-direction: column;
+  }
+
+  .fixed-panel {
+    display: none;
+  }
+
+  .mobile-info-bar {
+    display: flex !important;
+  }
+
+  .sections-wrapper {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: clip;
+  }
+
+  .section {
+    flex-shrink: 0;
+    width: 100% !important;
+    flex-direction: column;
+    box-shadow: none;
+  }
+
+  .section[data-index="1"] { z-index: 1; }
+  .section[data-index="2"] { z-index: 2; box-shadow: 0 -10px 24px rgba(0,0,0,0.09); }
+  .section[data-index="3"] { z-index: 3; box-shadow: 0 -10px 24px rgba(0,0,0,0.09); }
+
+  .section-mark {
+    width: 200px;
+    height: var(--section-collapsed-h);
+    align-self: center;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 12px;
+    border-radius: 0 0 7px 7px;
+    flex-shrink: 0;
+    order: -1;
+  }
+
+  .section[data-index="2"] .section-mark,
+  .section[data-index="3"] .section-mark {
+    box-shadow: none;
+  }
+
+  .mark-ic-group {
+    flex-direction: row;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .mark-oval {
+    width: 36px;
+    height: 22px;
+    border-radius: 50%;
+  }
+
+  .mark-ic-text {
+    writing-mode: horizontal-tb;
+    transform: none;
+    font-size: 14px;
+  }
+
+  .mark-num {
+    writing-mode: horizontal-tb;
+    transform: none;
+    font-size: 13px;
+  }
+
+  .mark-name-group {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .mark-label {
+    writing-mode: horizontal-tb;
+    transform: none;
+    font-size: 16px;
+  }
+
+  .section-content {
+    flex: 1;
+    min-height: 0;
+  }
+
+  .gallery-scroll {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+  }
+
+  .mobile-info-bar {
+    height: var(--infobar-h);
+    padding: 10px 12px;
+    gap: 12px;
+  }
+
+  .mobile-double-logo {
+    height: 72px;
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .mobile-about { font-size: 15px; }
+
+  .mobile-clock-group .spec-label,
+  .mobile-clock-group .clock-time,
+  .mobile-clock-group .clock-tz {
+    font-size: 15px;
+    font-weight: 500;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  :root {
+    --infobar-h: 92px;
+    --section-collapsed-h: 44px;
+  }
+
+  .mobile-double-logo { height: 56px; }
+  .mark-label { font-size: 15px; }
+  .mobile-about { font-size: 14px; line-height: 1.25; }
+  .mobile-clock-group .spec-label,
+  .mobile-clock-group .clock-time,
+  .mobile-clock-group .clock-tz { font-size: 13px; }
+}
+
+@media screen and (min-width: 600px) and (max-width: 768px) and (orientation: portrait) {
+  :root {
+    --infobar-h: 104px;
+    --section-collapsed-h: 52px;
+  }
+
+  .mark-label { font-size: 17px; }
+}

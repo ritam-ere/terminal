@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pesh.com — Clearer</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/panel.css">
+  <link rel="stylesheet" href="styles/sections.css">
+  <link rel="stylesheet" href="styles/gallery.css">
+  <link rel="stylesheet" href="styles/responsive.css">
+  <link rel="stylesheet" href="styles/crossing.css">
+  <link rel="stylesheet" href="styles/captcha.css">
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <div class="layout">
+
+    <aside class="fixed-panel">
+
+      <div class="panel-top">
+
+        <div class="logo-area">
+          <button class="logo-button" id="logoBtn" aria-expanded="false" aria-label="Open profile">
+            <img src="assets/pink_logo.png" alt="pesh.com logo" class="logo-img" onerror="this.style.display='none'">
+            <span class="logo-fallback" aria-hidden="true"></span>
+          </button>
+          <div class="logo-hover-strip" id="logoHoverStrip">
+            <span class="plus-icon" id="plusIcon">+</span>
+          </div>
+        </div>
+
+        <div class="panel-expand" id="panelExpand" aria-hidden="true">
+          <div class="panel-expand-inner">
+            <div class="expand-row">
+              <span class="expand-label">Walker ID</span>
+              <span class="expand-value">W-405</span>
+            </div>
+            <div class="expand-row">
+              <span class="expand-label">Session Time</span>
+              <span class="expand-value">2h36m</span>
+            </div>
+            <div class="expand-row expand-row--stacked">
+              <span class="expand-label">Items Crossed</span>
+              <div class="swatches" id="swatches">
+                <span class="swatch" style="background:#FF47E9" data-preview="assets/items/image1.png"></span>
+                <span class="swatch" style="background:#ffb3f0" data-preview="assets/items/image2.png"></span>
+                <span class="swatch" style="background:#8fa8a8" data-preview="assets/items/image4.png"></span>
+                <span class="swatch" style="background:#c4b5d4" data-preview="assets/items/image5.png"></span>
+                <span class="swatch-more">+2</span>
+              </div>
+            </div>
+            <div class="expand-row">
+              <span class="expand-label">A. Value</span>
+              <span class="expand-value">100</span>
+            </div>
+            <div class="swatch-preview" id="swatchPreview">
+              <img src="" alt="" id="swatchPreviewImg">
+            </div>
+          </div>
+          <button class="expand-close" id="expandClose" aria-label="Close">×</button>
+        </div>
+
+        <div class="about-block">
+          <p class="about-text">A bureau that focuses on walking along all places randomly.</p>
+          <a href="#" class="more-info">More info</a>
+        </div>
+
+      </div>
+
+      <div class="specs">
+        <span class="spec-label">Co°</span>
+        <span class="spec-value">114°21'16''</span>
+        <span class="spec-label">Time</span>
+        <div class="clock-group">
+          <span class="clock-time" id="clockTime">00:00:00</span>
+          <span class="clock-tz">CET</span>
+          <span class="clock-bullet" id="clockBullet">•</span>
+        </div>
+      </div>
+
+    </aside>
+
+    <main class="sections-wrapper" id="sectionsWrapper">
+
+      <section class="section" data-index="1" id="section1">
+        <div class="section-content">
+          <div class="gallery-stage">
+            <div class="gallery-scroll">
+              <div class="gallery-track">
+                <img src="assets/merch/poster1.png" alt="Merch item 1" class="gallery-item">
+                <img src="assets/merch/poster2.png" alt="Merch item 2" class="gallery-item">
+                <img src="assets/merch/poster3.png" alt="Merch item 3" class="gallery-item">
+                <img src="assets/merch/poster4.png" alt="Merch item 4" class="gallery-item">
+                <img src="assets/merch/poster5.png" alt="Merch item 5" class="gallery-item">
+                <img src="assets/merch/poster6.png" alt="Merch item 6" class="gallery-item">
+                <img src="assets/merch/poster7.png" alt="Merch item 7" class="gallery-item">
+                <img src="assets/merch/poster8.png" alt="Merch item 8" class="gallery-item">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section-mark" data-section="1">
+          <div class="mark-ic-group">
+            <div class="mark-oval">
+              <span class="mark-ic-text">I-C</span>
+            </div>
+            <span class="mark-num">1</span>
+          </div>
+          <div class="mark-name-group">
+            <span class="mark-badge">9</span>
+            <span class="mark-label">Merch</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" data-index="2" id="section2">
+        <div class="section-content section-content--placeholder" id="captcha-container">
+          <canvas id="corralCanvas"></canvas>
+          <div class="corral-ui">
+            <p class="corral-hint" id="corralHint">Guide the walker to the crossing point</p>
+          </div>
+          <div class="corral-verified" id="corralVerified">
+            <span>Walker Verified</span>
+          </div>
+        </div>
+        <div class="section-mark" data-section="2">
+          <div class="mark-ic-group">
+            <div class="mark-oval">
+              <span class="mark-ic-text">I-C</span>
+            </div>
+            <span class="mark-num">2</span>
+          </div>
+          <div class="mark-name-group">
+            <span class="mark-label">Capcha</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" data-index="3" id="section3">
+        <div class="section-content section-content--placeholder" id="crossing-container">
+          <canvas id="crossing-canvas"></canvas>
+
+          <div class="cross-flow" id="crossFlow">
+
+            <div class="cross-card cross-card--initial is-active" data-step="1">
+              <button class="cross-btn" data-action="change">
+                <span>Change the item</span>
+                <img src="assets/flow/icon_change.svg" alt="" class="cross-btn-icon">
+              </button>
+              <span class="cross-divider"></span>
+              <button class="cross-btn" data-action="look">
+                <span>Just lookin'</span>
+                <img src="assets/flow/icon_eyes.svg" alt="" class="cross-btn-icon">
+              </button>
+            </div>
+
+            <div class="cross-card cross-card--category" data-step="2">
+              <button class="cross-option" data-choice="obj">
+                <img src="assets/flow/obj.svg" alt="" class="cross-option-img">
+                <span class="cross-option-label">I change the Obj</span>
+              </button>
+              <div class="cross-mid">
+                <span class="cross-divider-v"></span>
+                <span class="cross-counter">( 1 )</span>
+                <span class="cross-divider-v"></span>
+              </div>
+              <button class="cross-option" data-choice="mem">
+                <img src="assets/flow/mem.svg" alt="" class="cross-option-img">
+                <span class="cross-option-label">I change the Mem</span>
+              </button>
+            </div>
+
+            <div class="cross-card cross-card--name" data-step="3">
+              <span class="cross-name-label">I'm naming it...</span>
+              <span class="cross-divider-v"></span>
+              <div class="cross-input-group">
+                <input type="text" class="cross-input" placeholder="Type item name" id="crossItemName">
+                <button class="cross-submit" data-action="submit-name">→</button>
+              </div>
+            </div>
+
+            <div class="cross-step4" data-step="4">
+              <div class="cross-card cross-card--hold-hint">
+                <span>Hold object to initiate cross</span>
+              </div>
+              <div class="cross-hold-body">
+                <div class="cross-slot">
+                  <div class="cross-slot-thumb" id="slotSelected"></div>
+                  <span class="cross-slot-badge" id="slotSelectedBadge"></span>
+                </div>
+                <div class="cross-hold-mid">
+                  <span class="cross-divider-v"></span>
+                </div>
+                <div class="cross-slot">
+                  <div class="cross-slot-thumb" id="slotUser">
+                    <img src="assets/flow/image-user-thing.png" alt="">
+                  </div>
+                  <span class="cross-slot-badge" id="slotUserBadge"></span>
+                </div>
+              </div>
+              <div class="cross-card cross-meta" id="crossMeta">
+                <div class="cross-meta-row">
+                  <span class="cross-meta-key">Name</span>
+                  <span class="cross-meta-val" id="metaName"></span>
+                </div>
+                <div class="cross-meta-row">
+                  <span class="cross-meta-key">About</span>
+                  <span class="cross-meta-val" id="metaAbout"></span>
+                </div>
+                <div class="cross-meta-row">
+                  <span class="cross-meta-key">Co°</span>
+                  <span class="cross-meta-val" id="metaCoords"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="cross-card cross-card--success" data-step="5">
+              <span class="cross-success-text">Items Crossed!</span>
+            </div>
+
+          </div>
+        </div>
+        <div class="section-mark" data-section="3">
+          <div class="mark-ic-group">
+            <div class="mark-oval">
+              <span class="mark-ic-text">I-C</span>
+            </div>
+            <span class="mark-num">3</span>
+          </div>
+          <div class="mark-name-group">
+            <span class="mark-label">Item cross</span>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="mobile-info-bar">
+      <div class="mobile-logos">
+        <img src="assets/pink_logo.png" alt="pesh.com logo" class="mobile-double-logo">
+      </div>
+      <div class="mobile-info-text">
+        <p class="mobile-about">A bureau that strives to walk along the places randomly.</p>
+        <div class="mobile-clock-group">
+          <span class="spec-label">Time</span>
+          <span class="clock-time" id="mobileClockTime">00:00:00</span>
+          <span class="clock-tz">CET</span>
+          <span class="clock-bullet" id="mobileClockBullet">•</span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="scripts/clock.js"></script>
+  <script src="scripts/accordion.js"></script>
+  <script src="scripts/panel.js"></script>
+  <script src="scripts/gallery.js"></script>
+  <script src="scripts/captcha.js"></script>
+  <script type="module" src="scripts/crossing.js"></script>
+</body>
+</html>
