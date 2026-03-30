@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { EXRLoader }  from 'three/addons/loaders/EXRLoader.js';
+import { RGBELoader }  from 'three/addons/loaders/RGBELoader.js';
 
 const GLB_PATHS = [
   'assets/items/item1.glb',
@@ -20,7 +20,7 @@ const IMAGE_PATHS = [
   'assets/items/image8.png',
 ];
 
-const HDRI_PATH = 'assets/hdri/flamingo_pan_4k.exr';
+const HDRI_PATH = 'assets/hdri/flamingo_pan_1k.hdr';
 
 const ITEM_META = {
   item1:  { name: 'Indila Cat',      about: 'Better in person, but kinda funny when sculpted',   coords: "127°10\"80'" },
@@ -88,7 +88,7 @@ function loadEnvironment(scene, renderer) {
   const pmrem = new THREE.PMREMGenerator(renderer);
   pmrem.compileEquirectangularShader();
 
-  new EXRLoader().load(
+  new RGBELoader().load(
     HDRI_PATH,
     (texture) => {
       const envMap = pmrem.fromEquirectangular(texture).texture;
